@@ -1,0 +1,12 @@
+body{
+    background-image: url('imag2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+.hr{
+    color: white;
+    border-width: 2px;
+}
+
