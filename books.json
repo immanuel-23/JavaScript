@@ -1,0 +1,22 @@
+[
+    {
+        "title":"Gifts of life",
+        "author":"V shekar",
+        "price":500
+    },
+    {
+        "title":"Head first java",
+        "author":"V shekar",
+        "price":500
+    },
+    {
+        "title":"Python",
+        "author":"V shekar",
+        "price":500
+    },
+    {
+        "title":"Local variable and global variable",
+        "author":"Immanuel",
+        "price":500
+    }
+]
