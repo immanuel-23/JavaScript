@@ -1,4 +1,5 @@
 console.log("local storage");
+
 localStorage.setItem("Name1","Immanuel")
 localStorage.setItem("Name2","rahul")
 localStorage.setItem("Name3","rohit")
@@ -30,6 +31,7 @@ sessionStorage.setItem("Name3","rohit")
 sessionStorage.setItem("Name4","Ashish")
 
 console.log(sessionStorage);
+
 
 
 

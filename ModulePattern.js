@@ -8,9 +8,12 @@ function EmployeeDetails() {
       age: age,
       designation: designation
     }
+
   }
+  // module pattern is used to wrap a set of variable and fuction together in a single scope
   
   var newEmployee = EmployeeDetails()
+  console.log(newEmployee);
   
   var userName = newEmployee.name;
   var userAge = newEmployee.age;
