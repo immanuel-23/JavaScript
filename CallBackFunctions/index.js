@@ -1,16 +1,26 @@
 // // call backfunction
-// //console.log(10);
+ console.log("call back demo");
 
 // const myFunc=function(callBack){
 //     let value=10;
 //     console.log(value);
+//     console.log(callBack);
 // }
 
 // const demoFunc=function(val){
-//     console.log(val);
+//     console.log(val+1);
 // }
 
 // myFunc(demoFunc);
+function x(y) {
+    console.log("from x");
+    y();
+}
+x(function y() {
+    console.log("from y");
+}
+)
+
 
 
 
@@ -49,32 +59,32 @@
 
 // object literal
 
-let players={
-    name:"Immanuel",
-    age:22,
-    matches:200,
-    tweets:["Hello Good Morning","India Won !","IPL is on the way"],
-    runs:200000,
-    wickets:190,
-    score:function(){
-        console.log("Highest run is "+ this.runs);
-    },
-    printMatches:function(){
-        console.log('Total matches '+this.matches);
-        //console.log(this);
-    },
-    allTweets:function(){
-        this.tweets.forEach(element => {
-            console.log(element)
-        });
-    }
-}
-console.log(players);
-console.log(players.name,players.age);
-console.log(players.tweets[2]);
-players.score();
-players.printMatches();
-players.allTweets();
+// let players={
+//     name:"Immanuel",
+//     age:22,
+//     matches:200,
+//     tweets:["Hello Good Morning","India Won !","IPL is on the way"],
+//     runs:200000,
+//     wickets:190,
+//     score:function(){
+//         console.log("Highest run is "+ this.runs);
+//     },
+//     printMatches:function(){
+//         console.log('Total matches '+this.matches);
+//         //console.log(this);
+//     },
+//     allTweets:function(){
+//         this.tweets.forEach(element => {
+//             console.log(element)
+//         });
+//     }
+// }
+// console.log(players);
+// console.log(players.name,players.age);
+// console.log(players.tweets[2]);
+// players.score();
+// players.printMatches();
+// players.allTweets();
 
 // console.log(players.score);
 // console.log(players.matches);
