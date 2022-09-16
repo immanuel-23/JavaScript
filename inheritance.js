@@ -10,8 +10,20 @@ class Vehicle{
     }
 
 }
+class Bike extends Vehicle{
+    constructor(name){
+        super(name)
+    }
+    start(){
+        console.log(`${this.name} has started to move`);
+
+    }
+    stop(){
+        console.log(`${this.name} has stoped moving`);
+
+    }
+}
 class Car extends Vehicle{
-    
     
     start(){
         console.log(`${this.name} has started to move`);
@@ -29,3 +41,7 @@ tesla.stop()
 let toyota = new Car("toyota")
 toyota.start();
 toyota.stop();
+
+let Yamaha = new Bike("Mt15");
+Yamaha.start();
+Yamaha.stop();

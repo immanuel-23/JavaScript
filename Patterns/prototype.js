@@ -1,3 +1,4 @@
+ 
  function CustomerPrototype(proto) {
     this.proto = proto;
 
