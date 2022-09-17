@@ -10,7 +10,7 @@ const product=[
     {name:"Pencil",price:10},
     {name:"Books",price:100},
 ]
-
+var finalTotal=[];
 
 let select = document.querySelector("select");
 let textarea=document.getElementsByTagName("h2");
@@ -59,16 +59,17 @@ function passValues() {
       alert("Item already exist in Cart")
     }else{
       table.innerHTML +=`<tr> <td>${productName}</td> <td class="quantity"> <div class="wrapper">
-      <div id="minus" class="minus">-</div>
+      <div id="minus" class="minus" onclick="decrement(this,${productPrice})">-</div>
       <div id="num" class="num">${productQuantity}</div>
-      <div id="plus" class="plus" value="click" onclick="increment(this)">+</div>
+      <div id="plus" class="plus" value="click" onclick="increment(this,${productPrice})">+</div>
     </div></td> <td  id= ${id} class="price"> ${productPrice} </td> <td id="subtotal"> ${productPrice*productQuantity} </td> <td> ${html} </td> `
     finalcart.push( { pid:`${id}`,price:`${productPrice}`,quantity:`${productQuantity}`,pname:`${productName}`, subTotal:`${parseInt(productPrice*productQuantity)}`})
     id=id+1
-      calculateToatlCart();
+    finalTotal.push(productPrice*productQuantity);
+      calculateFinalCart();
+
     }
-    
-    
+  
  
 }
 
@@ -76,34 +77,110 @@ function passValues() {
    
 var  num = parseInt(document.getElementById("num"))
   var value=parseInt(productQuantity);
-  const plus = document.getElementById("plus")
 
 
-function increment(plusbtn){
+function increment(plusbtn,price){
+
   var parent=plusbtn.parentNode;
- const nodel=parent.childNodes.id('num')
-console.log(nodel);//  nodel.map(element=>{
-//   element.querySelector('num')
-//  })
+  var child =parent.childNodes
+  var quantity
+  var subTotal;
+  var i;
+  var j;
+  var counter=0;
+  for(i=0;i<child.length;i++){
+    if(i==3){
+       quantity=parseInt(child[i].innerText)
+       quantity=quantity+1;
+       child[i].innerText=quantity
+       counter=counter+1;
+    }
+  }
+  var tr=parent.parentNode.parentNode;
+  for(let j=0;j<tr.childNodes.length;j++){
+    if(j==7){
+      subTotal=price*quantity;
+      console.log(subTotal);
+      tr.childNodes[j].innerText=price*quantity
+    }
+  }
+  finalTotal.push(price*counter);
+  console.log(finalTotal);
+calculateFinalCart()
+}
+
+function decrement(minusBtn,price) {
+  var parent=minusBtn.parentNode;
+  var child =parent.childNodes
+  var quantity
+  var i;
+  var counter=0;
+  for(i=0;i<child.length;i++){
+    if(i==3){
+       quantity=parseInt(child[i].innerText)
+       if(quantity>1){
+        quantity=quantity-1;
+        counter=counter+1;
+        finalTotal.pop(price*counter);
+
+       }else{
+        alert("Item cant be zero")
+       }
+       child[i].innerText=quantity
+    }
+  }
+  var tr=parent.parentNode.parentNode;
+  for(let j=0;j<tr.childNodes.length;j++){
+    if(j==7){
+      console.log(price*quantity);
+      console.log(tr.childNodes[j].innerText);
+      tr.childNodes[j].innerText=price*quantity
+    }
+  }
+  calculateFinalCart()
+
 
 }
+
+function calculateFinalCart(){
+  
+  var total=0;
+  for(var i=0;i<finalTotal.length;i++){
+    total=total+finalTotal[i]
+  }
+  totalPrice.innerText=`Total Cart Price is : ${total}`
+
+}
+
 
 
 function deleteRow(o) {
-
-    var p=o.parentNode.parentNode;
-    var deleteItemId=parseInt(o.id)
-    finalcart.pop(deleteItemId)
-    p.parentNode.removeChild(p);// reference from stack over flow;  
-
-    calculateToatlCart()
+var p=o.parentNode.parentNode;
+var a=o.parentNode.parentNode
+for(i=0;i<a.childNodes.length;i++){
+  if(i==7){
+    var b=parseInt((a.childNodes[i].innerText));
+  }
 }
+var total=0;
+console.log(b);
+for(var i=0;i<finalTotal.length;i++){
+  total=total+finalTotal[i]
+}
+
+total=total-b
+totalPrice.innerText=`Total Cart Price is : ${total}`
+
+    p.parentNode.removeChild(p);// reference from stack over flow;  
+}
+
 function calculateToatlCart() {
   var total=0;
   finalcart.forEach(element => {
     total=parseInt(element.subTotal)+total;
   });
   totalPrice.innerText=`Total Cart Price is : ${total}`
+
 }
    
 // function displayCart(){

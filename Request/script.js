@@ -2,13 +2,12 @@ var srNo=[];
 async function loadIntoTable(url,table){
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    console.log(data); 
     let index = 1;
     data.forEach(element => {
         
         table.innerHTML += 
         `<tr>
-            <td ></td>
             <td>${element.rollNo}</td>
             <td>${element.name}</td>
             <td>${element.age}</td>
@@ -71,8 +70,8 @@ console.log(createStudent);
 function deleStudent(student){
    
 var url="http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students";
-var del=student.id;
-fetch(`${url}/${del}`,{
+var id=student.id;
+fetch(`${url}/${id}`,{
     method:'DELETE'
 })
 .then(res=>res.json)
